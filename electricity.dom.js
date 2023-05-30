@@ -15,8 +15,9 @@ const electricity =  Electricity();
 // DOM events here 
 
 function buyElectricity(){
-	
-	
+
+
+//totalAmount=0;
 var amount=0;
 
 for(let radio of buyRadios){
@@ -41,9 +42,9 @@ advanceTick.style.visibility="visible";
 	
 electricity.topUpElectricity(amount);
 	
-amountTotal.innerHTML=totalAmount;
+amountTotal.innerHTML=electricity.totalAmountSpent();
 availableUnits.innerHTML=12;
-unitsTotal.innerHTML=15;
+unitsTotal.innerHTML=electricity.totalUnitsBought();
 }
 
 buy.addEventListener("click",buyElectricity);

@@ -8,6 +8,7 @@
    * if totalAmount equals to null, make it equal to parameter amount
   * else add parameter amount  to totalAmount 
   * use localStorage to update the totalAmount variable
+  *increase totalUnits based on electricity purchase amount
 **/
 
 
@@ -38,20 +39,28 @@ function Electricity() {
 
 if(amount){
 
+let num= Number(amount);
 if(totalAmount===null){
 
-totalAmount=amount;
+totalAmount=num;
 
 }
 
 else{
 
-totalAmount+=amount;
+totalAmount+=num;
 }
 
 localStorage.setItem("totalAmount",totalAmount);
 
-switch(amount){
+  if(totalUnits===null){
+	
+totalUnits=0;
+}
+
+else
+{
+switch( num){
 	
 case 10:
 totalUnits+=7;
@@ -73,6 +82,11 @@ break;
 
 }
 
+localStorage.setItem("totalUnits",totalUnits);
+    
+
+}
+
     }
 
     function getUnitsAvailable() {
@@ -86,15 +100,41 @@ break;
     */
     function useAppliance(appliance) {
         
-    }
+        if(appliance){
+        	
+       switch (appliance)  {
+       	
+       	case "stove":
+       totalUnits-5;
+       break;
+       
+       case "TV" :
+          totalUnits-3;
+       break;
+       
+       case "Fridge" :
+        totalUnits- 13;
+       break;
+       
+       case "Kettle" :
+          totalUnits-10;
+       break;
+ }
+ 
+ }
+ 
+ }
 
     function advanceTaken() {
     }
 
     function totalAmountSpent() {
-    }
+   	
+    return totalAmount;   
+}
 
     function totalUnitsBought(){
+    	return totalUnits;
     }
 
     return {
