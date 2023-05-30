@@ -115,19 +115,24 @@ localStorage.setItem("unitsAvailable",JSON.stringify(unitsAvailable));
        switch (appliance)  {
        	
        	case "stove":
-       unitsAvailable=unitsAvailable-10;
+       if(unitsAvailable >= appliances.Stove)
+
+    {   unitsAvailable=unitsAvailable-10;}
        break;
        
        case "TV" :
-             unitsAvailable= unitsAvailable-3;
+             if(unitsAvailable >= appliances.TV)
+           {  unitsAvailable= unitsAvailable-3;}
        break;
        
        case "Fridge" :
-         unitsAvailable=unitsAvailable-13;
+             if(unitsAvailable >= appliances.Fridge)
+         {unitsAvailable=unitsAvailable-13;}
        break;
        
        case "Kettle" :
-             unitsAvailable=unitsAvailable-5;
+             if(unitsAvailable >= appliances.Kettle)
+            { unitsAvailable=unitsAvailable-5;}
        break;
  }
  
