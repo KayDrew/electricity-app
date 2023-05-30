@@ -63,13 +63,17 @@ totalAmount+=num;
 
 localStorage.setItem("totalAmount",JSON.stringify(totalAmount));
 
+if(advance <0){
 
-num=num-advance;
+num+=advance;
+advance+= amount;
+}
 switch( num){
-	
+
 case 10:
 totalUnits+=7;
 unitsAvailable+=7;
+
 break;
 
 case 20:
@@ -80,7 +84,8 @@ break;
 case 30:
 totalUnits+=21;
 unitsAvailable+=21;
-advance=30;
+advance=-30;
+
 break;
 
 case 50:
@@ -89,6 +94,7 @@ unitsAvailable+=35;
 break;
 
 }
+
 
 
 localStorage.setItem("totalUnits",JSON.stringify(totalUnits));
@@ -111,6 +117,7 @@ localStorage.setItem("unitsAvailable",JSON.stringify(unitsAvailable));
     function useAppliance(appliance) {
         
         if(appliance){
+        	
         	
        switch (appliance)  {
        	

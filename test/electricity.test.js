@@ -10,6 +10,11 @@
  * 
  */
 describe("The buy electricity app", function () {
+	
+	totalAmount=0;
+	totalUnits=0;
+	unitsAvailable=0;
+	advance=0;
 
     it("should return 0 if not topup made yet", function () {
 
@@ -19,6 +24,10 @@ describe("The buy electricity app", function () {
     })
 
     it("should allow a user to top-up electricity with 10", function () {
+totalAmount=0;
+	totalUnits=0;
+	unitsAvailable=0;
+	advance=0;
 
         const electricity = Electricity();
 
@@ -28,6 +37,10 @@ describe("The buy electricity app", function () {
     })
 
     it("should allow a user to top-up electricity with 20", function () {
+totalAmount=0;
+	totalUnits=0;
+	unitsAvailable=0;
+	advance=0;
 
         const electricity = Electricity();
 
@@ -37,6 +50,10 @@ describe("The buy electricity app", function () {
     })
 
     it("should allow a user to top-up electricity with 50", function () {
+totalAmount=0;
+	totalUnits=0;
+	unitsAvailable=0;
+	advance=0;
 
         const electricity = Electricity();
 
@@ -46,6 +63,10 @@ describe("The buy electricity app", function () {
     })
 
     it("should allow a user to top-up electricity multiple times", function () {
+totalAmount=0;
+	totalUnits=0;
+	unitsAvailable=0;
+	advance=0;
 
         const electricity = Electricity();
 
@@ -58,6 +79,10 @@ describe("The buy electricity app", function () {
     })
 
     it("should not allow a user to take advance more than once without paying the balance", function () {
+totalAmount=0;
+	totalUnits=0;
+	unitsAvailable=0;
+	advance=0;
 
         const electricity = Electricity();
 
@@ -68,6 +93,10 @@ describe("The buy electricity app", function () {
     })
 
     it("should allow a user to take advance and pay for the advance", function () {
+totalAmount=0;
+	totalUnits=0;
+	unitsAvailable=0;
+	advance=0;
 
         const electricity = Electricity();
 
