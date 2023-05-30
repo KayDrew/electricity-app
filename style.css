@@ -16,6 +16,12 @@ body {
 	display: inline;
 }
 
+.tick{
+
+color: green;
+visibility: hidden;
+}
+
 .section {
 	flex: 1;
 	background-color: #FFBF00;
