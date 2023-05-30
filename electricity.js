@@ -25,7 +25,8 @@ let advance= JSON.parse(localStorage.getItem("advanceTaken"));
 
 function Electricity() {
 	
-	let advance=false;
+	let advance=0;
+	let advanceAvailable=true;
     // do we want to go with this or array? 
     let appliances = {
         'Stove': 10, 
@@ -39,17 +40,26 @@ function Electricity() {
 if(amount){
 
 let num= Number(amount);
+
 if(totalAmount===null){
 
+if(amount!==30){
 totalAmount=num;
+}
 
-
+else {
+totalAmount=0;
+}
 }
 
 else{
+	
+if(amount!==30){
 
 totalAmount+=num;
 }
+}
+
 
 localStorage.setItem("totalAmount",JSON.stringify(totalAmount));
 
@@ -61,6 +71,8 @@ unitsAvailable=0;
 
 else
 {
+
+num=num-advance;
 switch( num){
 	
 case 10:
@@ -76,6 +88,7 @@ break;
 case 30:
 totalUnits+=21;
 unitsAvailable+=21;
+advance=30;
 break;
 
 case 50:
@@ -85,9 +98,11 @@ break;
 
 }
 
+
 }
 
 localStorage.setItem("totalUnits",JSON.stringify(totalUnits));
+localStorage.setItem("unitsAvailable",JSON.stringify(unitsAvailable));
     
 
 }
@@ -126,7 +141,8 @@ localStorage.setItem("totalUnits",JSON.stringify(totalUnits));
        break;
  }
  
- }
+localStorage.setItem("unitsAvailable",JSON.stringify(unitsAvailable)); }
+ 
  
  }
 
