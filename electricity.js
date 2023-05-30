@@ -20,13 +20,14 @@
 
 
 
-let unitsAvailable=localStorage.getItem("unitsAvailable");
-let totalUnits= localStorage.getItem("totalUnits");
-let totalAmount=localStorage.getItem("totalAmount");
-let advance= localStorage.getItem("advanceTaken");
+let unitsAvailable=JSON.parse(localStorage.getItem("unitsAvailable"));
+let totalUnits=JSON.parse(localStorage.getItem("totalUnits"));
+let totalAmount=JSON.parse(localStorage.getItem("totalAmount"));
+let advance= JSON.parse(localStorage.getItem("advanceTaken"));
 
 function Electricity() {
-
+	
+	let advance=false;
     // do we want to go with this or array? 
     let appliances = {
         'Stove': 10, 
@@ -44,6 +45,7 @@ if(totalAmount===null){
 
 totalAmount=num;
 
+
 }
 
 else{
@@ -51,11 +53,12 @@ else{
 totalAmount+=num;
 }
 
-localStorage.setItem("totalAmount",totalAmount);
+localStorage.setItem("totalAmount",JSON.stringify(totalAmount));
 
   if(totalUnits===null){
 	
 totalUnits=0;
+unitsAvailable=0;
 }
 
 else
@@ -64,25 +67,29 @@ switch( num){
 	
 case 10:
 totalUnits+=7;
+unitsAvailable+=7;
 break;
 
 case 20:
 totalUnits+=14;
+unitsAvailable+=14;
 break;
 
 case 30:
 totalUnits+=21;
+unitsAvailable+=21;
 break;
 
 case 50:
 totalUnits+=35;
+unitsAvailable+=35;
 break;
 
 }
 
 }
 
-localStorage.setItem("totalUnits",totalUnits);
+localStorage.setItem("totalUnits",JSON.stringify(totalUnits));
     
 
 }
@@ -105,19 +112,19 @@ localStorage.setItem("totalUnits",totalUnits);
        switch (appliance)  {
        	
        	case "stove":
-       totalUnits-5;
+       unitsAvailable-=5;
        break;
        
        case "TV" :
-          totalUnits-3;
+             unitsAvailable-=3;
        break;
        
        case "Fridge" :
-        totalUnits- 13;
+         unitsAvailable-=13;
        break;
        
        case "Kettle" :
-          totalUnits-10;
+             unitsAvailable-=10;
        break;
  }
  
@@ -126,6 +133,7 @@ localStorage.setItem("totalUnits",totalUnits);
  }
 
     function advanceTaken() {
+    	
     }
 
     function totalAmountSpent() {

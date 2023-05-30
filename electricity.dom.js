@@ -12,12 +12,15 @@ let useRadios= document.querySelectorAll("input[name='buyElectricity']");
 // Factory Function instance 
 const electricity =  Electricity();
 
+amountTotal.innerHTML=electricity.totalAmountSpent();
+unitsTotal.innerHTML=electricity.totalUnitsBought();
+availableUnits.innerHTML=electricity.getUnitsAvailable();
+
+
 // DOM events here 
 
 function buyElectricity(){
 
-
-//totalAmount=0;
 var amount=0;
 
 for(let radio of buyRadios){
@@ -43,7 +46,7 @@ advanceTick.style.visibility="visible";
 electricity.topUpElectricity(amount);
 	
 amountTotal.innerHTML=electricity.totalAmountSpent();
-availableUnits.innerHTML=12;
+availableUnits.innerHTML=electricity.getUnitsAvailable();
 unitsTotal.innerHTML=electricity.totalUnitsBought();
 }
 
@@ -51,8 +54,16 @@ buy.addEventListener("click",buyElectricity);
 
 function useElectricity(){
 
-availableUnits.innerHTML=82;
-unitsTotal.innerHTML=5;
+var appliance="";
+for(let radio of useRadios){
+
+if(radio.checked){
+appliance=radio.value;
+}
+
+}
+electricity.useAppliance(appliance);
+availableUnits.innerHTML=electricity.getUnitsAvailable();
 
 }
 
