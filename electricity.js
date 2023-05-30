@@ -63,14 +63,6 @@ totalAmount+=num;
 
 localStorage.setItem("totalAmount",JSON.stringify(totalAmount));
 
-  if(totalUnits===null){
-	
-totalUnits=0;
-unitsAvailable=0;
-}
-
-else
-{
 
 num=num-advance;
 switch( num){
@@ -98,8 +90,6 @@ break;
 
 }
 
-
-}
 
 localStorage.setItem("totalUnits",JSON.stringify(totalUnits));
 localStorage.setItem("unitsAvailable",JSON.stringify(unitsAvailable));
