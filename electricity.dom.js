@@ -21,6 +21,7 @@ availableUnits.innerHTML=electricity.getUnitsAvailable();
 
 function buyElectricity(){
 
+
 var amount=0;
 
 for(let radio of buyRadios){
@@ -37,10 +38,11 @@ else{
 
 amount=30;
 advanceTick.style.visibility="visible";
-
 }
 
 }
+
+
 }
 	
 electricity.topUpElectricity(amount);

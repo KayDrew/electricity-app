@@ -80,16 +80,15 @@ totalAmount=0;
 
     it("should not allow a user to take advance more than once without paying the balance", function () {
 totalAmount=0;
-	totalUnits=0;
-	unitsAvailable=0;
+	
 	advance=0;
 
         const electricity = Electricity();
 
-        electricity.topUpElectricity('advance');
-        electricity.topUpElectricity('advance');
+        electricity.topUpElectricity(30);
+        electricity.topUpElectricity(30);
 
-        assert.equal(21, electricity.getUnitsAvailable());
+        assert.equal(91, electricity.getUnitsAvailable());
     })
 
     it("should allow a user to take advance and pay for the advance", function () {
@@ -100,19 +99,22 @@ totalAmount=0;
 
         const electricity = Electricity();
 
-        electricity.topUpElectricity('advance');
+        electricity.topUpElectricity(30);
         electricity.topUpElectricity(50);
-        electricity.topUpElectricity('advance');
+        electricity.topUpElectricity(30);
 
-        assert.equal(56, electricity.getUnitsAvailable());
+        assert.equal(35, electricity.getUnitsAvailable());
     })
 
 
     it("should allow a user to take advance and pay for the advance and use appliances", function () {
-
+totalAmount=0;
+	totalUnits=0;
+	unitsAvailable=0;
+	advance=0;
         const electricity = Electricity();
 
-        electricity.topUpElectricity('advance');
+        electricity.topUpElectricity(30);
         assert.isTrue(electricity.advanceTaken());
 
         electricity.topUpElectricity(20);
@@ -120,7 +122,7 @@ totalAmount=0;
         assert.isTrue(electricity.advanceTaken());
 
         // advanced ignored as you still owe R10
-        electricity.topUpElectricity('advance');
+        electricity.topUpElectricity(30);
         electricity.topUpElectricity(20);
         assert.isFalse(electricity.advanceTaken());
         assert.equal(28, electricity.getUnitsAvailable());
@@ -128,13 +130,16 @@ totalAmount=0;
         assert.isTrue(electricity.useAppliance('TV'));
 
         // advanced is valid now
-        electricity.topUpElectricity('advance');
+        electricity.topUpElectricity(30);
 
         assert.equal(46, electricity.getUnitsAvailable());
     })
 
     it("should allow appliances usage", function () {
-
+totalAmount=0;
+	totalUnits=0;
+	unitsAvailable=0;
+	advance=0;
         const electricity = Electricity();
 
         electricity.topUpElectricity(50);
@@ -146,7 +151,10 @@ totalAmount=0;
     })
 
     it("should not allow appliance usage if not enough electricity", function () {
-
+totalAmount=0;
+	totalUnits=0;
+	unitsAvailable=0;
+	advance=0;
         const electricity = Electricity();
 
         electricity.topUpElectricity(10);
@@ -167,7 +175,10 @@ totalAmount=0;
     })
 
     it("should allow electricity usage after topping up with advance", function () {
-
+totalAmount=0;
+	totalUnits=0;
+	unitsAvailable=0;
+	advance=0;
         const electricity = Electricity();
 
         electricity.topUpElectricity(10);
@@ -178,7 +189,7 @@ totalAmount=0;
         assert.isFalse(electricity.useAppliance('Fridge'));
         assert.isFalse(electricity.useAppliance('Kettle'));
 
-        electricity.topUpElectricity('advance');
+        electricity.topUpElectricity(30);
         assert.isTrue(electricity.useAppliance('Fridge'));
         assert.isTrue(electricity.useAppliance('Stove'));
 
@@ -187,7 +198,12 @@ totalAmount=0;
     });
 
     it("should calculate the total amount spent", function() {
-        const electricity = Electricity();
+    totalAmount=0;
+	totalUnits=0;
+	unitsAvailable=0;
+	advance=0;
+
+    const electricity = Electricity();
         
         // electricity.topUpElectricity(20);  // 14
         electricity.topUpElectricity(10);  // 7
@@ -198,7 +214,13 @@ totalAmount=0;
     });
 
     it("should calculate the total amount units bought", function() {
-        const electricity = Electricity();
+    
+totalAmount=0;
+	totalUnits=0;
+	unitsAvailable=0;
+	advance=0;
+
+    const electricity = Electricity();
 
         electricity.topUpElectricity(20);  // 14
         electricity.topUpElectricity(10);  // 7

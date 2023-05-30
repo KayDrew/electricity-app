@@ -17,6 +17,22 @@
   *return unitsAvailable 
 **/
 
+/*
+   function advanceTaken 
+  *return isAdvanceTaken boolean
+**/
+
+/*
+   function useAppliance 
+  *check if there are enough  units  available 
+  *if yes, subtract appliance voltage from total available units
+**/
+
+/*
+   function totalAmountSpent 
+  *return totalAmount 
+**/
+
 
 let unitsAvailable=JSON.parse(localStorage.getItem("unitsAvailable"));
 let totalUnits=JSON.parse(localStorage.getItem("totalUnits"));
@@ -26,7 +42,7 @@ let advance= JSON.parse(localStorage.getItem("advanceTaken"));
 function Electricity() {
 	
 	let advance=0;
-	let advanceAvailable=true;
+	let isAdvanceTaken=false;
     // do we want to go with this or array? 
     let appliances = {
         'Stove': 10, 
@@ -65,9 +81,14 @@ localStorage.setItem("totalAmount",JSON.stringify(totalAmount));
 
 if(advance <0){
 
+if(num !==30){
 num+=advance;
 advance+= amount;
 }
+isAdvanceTaken=true;
+}
+
+
 switch( num){
 
 case 10:
@@ -82,10 +103,13 @@ unitsAvailable+=14;
 break;
 
 case 30:
+
+if(advance ==0){
 totalUnits+=21;
 unitsAvailable+=21;
-advance=-30;
-
+advance= advance-30;
+isAdvanceTaken=true;
+}
 break;
 
 case 50:
@@ -149,7 +173,7 @@ localStorage.setItem("unitsAvailable",JSON.stringify(unitsAvailable)); }
  }
 
     function advanceTaken() {
-    	
+    	 return  isAdvanceTaken;
     }
 
     function totalAmountSpent() {
