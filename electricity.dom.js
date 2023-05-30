@@ -6,7 +6,7 @@ let  unitsTotal= document.querySelector(".totalUnits");
 let amountTotal= document.querySelector(".totalAmount");
 let use=document.querySelector(".useNow");
 let advanceTick= document.querySelector(".tick");
-let useRadios= document.querySelectorAll("input[name='buyElectricity']");
+let useRadios= document.querySelectorAll("input[name='useElectricity']");
 
 
 // Factory Function instance 

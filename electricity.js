@@ -18,8 +18,6 @@
 **/
 
 
-
-
 let unitsAvailable=JSON.parse(localStorage.getItem("unitsAvailable"));
 let totalUnits=JSON.parse(localStorage.getItem("totalUnits"));
 let totalAmount=JSON.parse(localStorage.getItem("totalAmount"));
@@ -112,19 +110,19 @@ localStorage.setItem("totalUnits",JSON.stringify(totalUnits));
        switch (appliance)  {
        	
        	case "stove":
-       unitsAvailable-=5;
+       unitsAvailable=unitsAvailable-10;
        break;
        
        case "TV" :
-             unitsAvailable-=3;
+             unitsAvailable= unitsAvailable-3;
        break;
        
        case "Fridge" :
-         unitsAvailable-=13;
+         unitsAvailable=unitsAvailable-13;
        break;
        
        case "Kettle" :
-             unitsAvailable-=10;
+             unitsAvailable=unitsAvailable-5;
        break;
  }
  
